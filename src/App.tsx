@@ -8,7 +8,6 @@ import { ThemeProvider } from "./components/theme-provider"
 import rawFilms from './showtimes.json'
 import { Tabs, TabsList, TabsTrigger, TabsContent } from './components/ui/tabs'
 import { FilmsTab } from './FilmsTab'
-import { FavoritesTab } from './FavoritesTab'
 import { useStickySet } from './hooks'
 import { AttendingTab } from './AttendingTab'
 
@@ -108,7 +107,6 @@ function App() {
           <div className="flex justify-between items-center">
             <TabsList>
               <TabsTrigger value="films">Films</TabsTrigger>
-              <TabsTrigger value="starred">Favorites ({starred.size})</TabsTrigger>
               <TabsTrigger value="attending">Attending ({attending.size})</TabsTrigger>
             </TabsList>
             <ModeToggle />
@@ -135,15 +133,6 @@ function App() {
               toggleAttending={toggleAttending}
               filterFavorites={filterFavorites}
               setFilterFavorites={setFilterFavorites}
-            />
-          </TabsContent>
-          <TabsContent value="starred">
-            <FavoritesTab
-              films={films.filter(f => starred.has(f.title))}
-              starred={starred}
-              attending={attending}
-              toggleAttending={toggleAttending}
-              toggleStarred={toggleStarred}
             />
           </TabsContent>
           <TabsContent value="attending">

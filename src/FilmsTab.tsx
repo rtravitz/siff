@@ -43,6 +43,7 @@ export function FilmsTab(props: FilmsTabProps) {
     || props.selectedDate
     || props.startAfter
     || props.startBefore
+    || props.filterFavorites
 
   const clearFilters = () => {
     props.setFilterTitle('')
@@ -50,6 +51,7 @@ export function FilmsTab(props: FilmsTabProps) {
     props.setSelectedDate(null)
     props.setStartAfter(null)
     props.setStartBefore(null)
+    props.setFilterFavorites(false)
   }
 
   const checkFiltersForFilm = (film: Film): boolean => {
@@ -69,6 +71,11 @@ export function FilmsTab(props: FilmsTabProps) {
 
     return titleMatches && venueMatches && dateMatches && inTimeRange
   }
+
+  const toggleFavoritesButtonStyle = props.filterFavorites ?
+  { border: 'solid 2px gold'} : {}
+  const toggleFavoritesStarColor = props.filterFavorites ? 'gold' : 'none'
+
 
   return (
     <>
@@ -98,8 +105,10 @@ export function FilmsTab(props: FilmsTabProps) {
               checked={Array.from(props.selectedVenues)}
             />
             <Button
+              style={toggleFavoritesButtonStyle}
+              variant="outline"
               onClick={() => { props.setFilterFavorites(!props.filterFavorites) }}
-            >Only Favorites <Star className="ml-2" size={16} />
+            >Only Favorites <Star fill={toggleFavoritesStarColor} className="ml-2" size={16} />
             </Button>
           </AccordionContent>
         </AccordionItem>
