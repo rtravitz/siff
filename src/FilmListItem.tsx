@@ -50,7 +50,7 @@ export function FilmListItem(props: FilmListItemProps) {
             .filter(showing => checkFiltersForShowing(showing))
             .map(showing => {
               const attendingFill = props.attending.has(showing.id) ? '#86efac' : 'none'
-              return <div className="flex mt-1 items-center ">
+              return <div className="flex mt-1 items-center" key={showing.id}>
                 <Play
                   fill={attendingFill}
                   onClick={() => { props.toggleAttending(showing.id) }}

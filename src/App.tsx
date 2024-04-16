@@ -10,6 +10,7 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from './components/ui/tabs'
 import { FilmsTab } from './FilmsTab'
 import { useStickySet } from './hooks'
 import { AttendingTab } from './AttendingTab'
+import { InfoPopover } from './InfoPopover'
 
 export const linkStyle = 'underline underline-offset-4 decoration-2 decoration-teal-600'
 
@@ -109,10 +110,13 @@ function App() {
               <TabsTrigger value="films">Films</TabsTrigger>
               <TabsTrigger value="attending">Attending ({attending.size})</TabsTrigger>
             </TabsList>
-            <ModeToggle />
+            <div className="flex items-center">
+              <InfoPopover />
+              <ModeToggle />
+            </div>
           </div>
           <TabsContent value="films">
-            <FilmsTab 
+            <FilmsTab
               allVenues={allVenues}
               films={films}
               filterTitle={filterTitle}

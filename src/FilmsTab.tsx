@@ -124,6 +124,7 @@ export function FilmsTab(props: FilmsTabProps) {
           props.films
             .filter(film => checkFiltersForFilm(film))
             .map(film => <FilmListItem
+              key={film.title}
               film={film}
               selectedVenues={props.selectedVenues}
               selectedDate={props.selectedDate}

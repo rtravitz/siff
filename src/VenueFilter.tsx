@@ -35,6 +35,7 @@ export function VenueFilter(props: VenueFilterProps) {
           {
             props.venues.map(name =>
               <DropdownMenuCheckboxItem
+                key={name}
                 checked={props.checked.includes(name)}
                 onCheckedChange={onChanged(name)} 
                 >
