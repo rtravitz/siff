@@ -1,5 +1,5 @@
 import { Dayjs } from 'dayjs';
-import { Film, Showing, linkStyle } from './App'
+import { Film, Showing, linkStyle } from '@/app'
 import { Star, Play } from 'lucide-react'
 
 interface FilmListItemProps {

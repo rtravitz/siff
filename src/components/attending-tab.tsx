@@ -1,6 +1,6 @@
 import { Button } from '@/components/ui/button'
-import { Film, Showing } from "./App";
-import { FilmListItem } from "./FilmListItem"
+import { Film, Showing } from '@/app';
+import { FilmListItem } from '@/components/film-list-item'
 import { Calendar } from 'lucide-react'
 
 interface AttendingTabProps {

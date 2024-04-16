@@ -7,10 +7,10 @@ import { ModeToggle } from "./components/mode-toggle"
 import { ThemeProvider } from "./components/theme-provider"
 import rawFilms from './showtimes.json'
 import { Tabs, TabsList, TabsTrigger, TabsContent } from './components/ui/tabs'
-import { FilmsTab } from './FilmsTab'
+import { FilmsTab } from '@/components/films-tab'
 import { useStickySet } from './hooks'
-import { AttendingTab } from './AttendingTab'
-import { InfoPopover } from './InfoPopover'
+import { AttendingTab } from '@/components/attending-tab'
+import { InfoPopover } from '@/components/info-popover'
 
 export const linkStyle = 'underline underline-offset-4 decoration-2 decoration-teal-600'
 

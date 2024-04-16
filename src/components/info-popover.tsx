@@ -1,12 +1,11 @@
-import { Button } from './components/ui/button'
+import { Button } from '@/components/ui/button'
 import { CircleHelp } from 'lucide-react'
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover"
-
-import { linkStyle } from './App'
+import { linkStyle } from '@/app'
 
 export function InfoPopover() {
   return (

@@ -1,7 +1,9 @@
-import { Input } from './components/ui/input'
-import { VenueFilter } from './VenueFilter'
-import { DatePicker } from './DatePicker'
-import { TimePicker } from './TimePicker'
+import { Dayjs } from 'dayjs'
+import { Star } from 'lucide-react'
+import { Input } from '@/components/ui/input'
+import { VenueFilter } from '@/components/venue-filter'
+import { DatePicker } from '@/components/date-picker'
+import { TimePicker } from '@/components/time-picker'
 import { Button } from "@/components/ui/button"
 import {
   Accordion,
@@ -9,10 +11,8 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion"
-import { FilmListItem } from './FilmListItem'
-import { Dayjs } from 'dayjs'
-import { linkStyle, Film } from './App'
-import { Star } from 'lucide-react'
+import { FilmListItem } from '@/components/film-list-item'
+import { linkStyle, Film } from '@/app'
 
 interface FilmsTabProps {
   allVenues: string[];
