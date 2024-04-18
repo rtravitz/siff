@@ -11,8 +11,8 @@ interface FilmListItemProps {
   starred: boolean;
   checkFilters: boolean;
   toggleStarred: (name: string) => void;
-  attending: Set<number>;
-  toggleAttending: (_: number) => void;
+  attending: Set<string>;
+  toggleAttending: (_: string) => void;
   checkAttending: boolean;
 }
 

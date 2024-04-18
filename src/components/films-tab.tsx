@@ -31,8 +31,8 @@ interface FilmsTabProps {
   startBefore: Dayjs | null;
   toggleStarred: (name: string) => void;
   updateSelectedVenues: (name: string, add: boolean) => void;
-  attending: Set<number>;
-  toggleAttending: (_: number) => void;
+  attending: Set<string>;
+  toggleAttending: (_: string) => void;
   filterFavorites: boolean;
   setFilterFavorites: (_: boolean) => void;
 }

@@ -5,12 +5,12 @@ import isSameOrAfter from 'dayjs/plugin/isSameOrAfter'
 import isSameOrBefore from 'dayjs/plugin/isSameOrBefore'
 import { ModeToggle } from "./components/mode-toggle"
 import { ThemeProvider } from "./components/theme-provider"
-import rawFilms from './showtimes.json'
 import { Tabs, TabsList, TabsTrigger, TabsContent } from './components/ui/tabs'
 import { FilmsTab } from '@/components/films-tab'
 import { useStickySet } from './hooks'
 import { AttendingTab } from '@/components/attending-tab'
 import { InfoPopover } from '@/components/info-popover'
+import rawFilms from './festival-2024.json'
 
 export const linkStyle = 'underline underline-offset-4 decoration-2 decoration-teal-600'
 
@@ -19,7 +19,7 @@ dayjs.extend(isSameOrAfter)
 dayjs.extend(isSameOrBefore)
 
 export interface Showing {
-  id: number;
+  id: string;
   date: Dayjs;
   time: Dayjs;
   location: string;
@@ -37,7 +37,7 @@ const films: Film[] = rawFilms.map(f => ({
   showings: f.showings.map(show => (
     {
       id: show.id,
-      date: dayjs(show.date, 'M/D/YY'),
+      date: dayjs(show.date, 'M/DD/YY'),
       time: dayjs(show.time, 'h:mm A'),
       location: show.location,
     })
@@ -57,7 +57,7 @@ function App() {
   const [startAfter, setStartAfter] = useState<Dayjs | null>(null)
   const [startBefore, setStartBefore] = useState<Dayjs | null>(null)
   const [starred, setStarred] = useStickySet<string>(new Set<string>(), 'starred')
-  const [attending, setAttending] = useStickySet<number>(new Set<number>(), 'attending')
+  const [attending, setAttending] = useStickySet<string>(new Set<string>(), 'attending')
   const [filterFavorites, setFilterFavorites] = useState(false);
 
   const toggleStarred = (name: string) => {
@@ -71,7 +71,7 @@ function App() {
     setStarred(updated)
   }
 
-  const toggleAttending = (id: number) => {
+  const toggleAttending = (id: string) => {
     const updated = new Set(attending)
     if (updated.has(id)) {
       updated.delete(id)

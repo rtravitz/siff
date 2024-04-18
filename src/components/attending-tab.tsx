@@ -1,14 +1,12 @@
-import { Button } from '@/components/ui/button'
 import { Film, Showing } from '@/app';
 import { FilmListItem } from '@/components/film-list-item'
-import { Calendar } from 'lucide-react'
 
 interface AttendingTabProps {
   films: Film[]
   starred: Set<string>;
   toggleStarred: (name: string) => void;
-  attending: Set<number>;
-  toggleAttending: (_: number) => void;
+  attending: Set<string>;
+  toggleAttending: (_: string) => void;
 }
 
 interface ShowingOption {
@@ -38,10 +36,6 @@ export function AttendingTab(props: AttendingTabProps) {
   return (
     <div>
       <div className="my-4">
-        <Button variant="default" className="flex items-center mt-2">
-          <Calendar size="16" className="mr-2" />
-          Create Calendar Event
-        </Button>
       </div>
       <ul>
         {
