@@ -60,20 +60,19 @@ export function FilmsTab(props: FilmsTabProps) {
     }
 
     const titleMatches = film.title.toLowerCase().includes(props.filterTitle)
-    const venueMatches = props.selectedVenues.size === 0 || film.showings.some(show => props.selectedVenues.has(show.location))
-    const dateMatches = props.selectedDate === null || film.showings.some(show => show.date.isSame(props.selectedDate, 'day'))
-    const inTimeRange = film.showings.some(show => {
+    const atLeastOneShowingMatches = film.showings.some(show => {
       const startBeforeMatches = props.startBefore === null || show.time.isSameOrBefore(props.startBefore, 'minute')
       const startAfterMatches = props.startAfter === null || show.time.isSameOrAfter(props.startAfter, 'minute')
-
-      return startBeforeMatches && startAfterMatches
+      const venueMatches = props.selectedVenues.size === 0 || props.selectedVenues.has(show.location)
+      const dateMatches = props.selectedDate === null || show.date.isSame(props.selectedDate, 'day')
+      return startBeforeMatches && startAfterMatches && venueMatches && dateMatches
     })
 
-    return titleMatches && venueMatches && dateMatches && inTimeRange
+    return titleMatches && atLeastOneShowingMatches
   }
 
   const toggleFavoritesButtonStyle = props.filterFavorites ?
-  { border: 'solid 2px gold'} : {}
+    { border: 'solid 2px gold' } : {}
   const toggleFavoritesStarColor = props.filterFavorites ? 'gold' : 'none'
 
 
